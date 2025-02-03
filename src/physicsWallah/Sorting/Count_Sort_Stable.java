@@ -36,6 +36,10 @@ public class Count_Sort_Stable {
         }
         System.out.println("Array after sorting: ");
         display(ans);
+        // Copy sorted elements back to original array
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = ans[i];
+        }
     }
     public static void main(String[] args) {
         int[] arr = {2,3,2,4,0,1,4,1,0,2};
