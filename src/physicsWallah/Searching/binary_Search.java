@@ -14,7 +14,7 @@ public class binary_Search {
         while(start<=end){
 
             //finding mid
-            int mid = (start + end )/ 2;
+            int mid = start + (end - start)/ 2;
 
             if(target == arr[mid]){
                 return true;

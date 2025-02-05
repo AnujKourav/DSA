@@ -5,7 +5,7 @@ package physicsWallah.Searching;
 public class recursive_Binary_Search {
     static boolean search(int []arr, int target,int start,int end){
         if(start > end)return false;
-        int mid = (start + end) / 2;
+        int mid = start + (end - start) / 2;
         if(target == arr[mid])return true;
         else if(target > arr[mid]) return search(arr,target,mid+1,end);
         else return search(arr,target,start,mid-1);
