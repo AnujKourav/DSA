@@ -33,8 +33,9 @@ public class binary_Search {
 
         //passing sorted array
         int []arr = {1,2,3,4,5};
+        int target = 6;
 
-        System.out.println(search(arr,6));
+        System.out.println(search(arr,target));
 
     }
 }
