@@ -1,4 +1,4 @@
-package physicsWallah;
+package physicsWallah.Array;
 //import java.util.*;
 //public class Two_dArray {
 //

@@ -1,4 +1,4 @@
-package physicsWallah;
+package physicsWallah.Array;
 //
 //public class Array {
 //        static void printArray(int []arr){
