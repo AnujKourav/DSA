@@ -10,7 +10,7 @@ public class Q3 {
         if(arr.length < 3)return -1;
         int ans = -1;
         while(start <= end){
-            int mid = start + (end - start) / 3;
+            int mid = start + (end - start) / 2;
             if(arr[mid] < arr[mid+1]) {
                 ans = mid + 1;
                 start = mid + 1;
@@ -22,7 +22,7 @@ public class Q3 {
     }
 
     public static void main(String[] args) {
-        int []arr = {7,6,5,4,3,2,1,0};
+        int []arr = {1,7,6,5,4,3,2,1,0};
         System.out.println(peak(arr));
     }
 }
