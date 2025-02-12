@@ -11,6 +11,7 @@ public class Implementation {
     public static class linkedList{ // Linked list will behave as a data structure
         Node head = null;
         Node tail = null;
+        int size = 0;
         void insert(int val,int index){ // Insert element at any index
             Node temp = new Node(val);
             Node ptr = head;
@@ -18,11 +19,11 @@ public class Implementation {
                 insertAtHead(val);
                 return;
             }
-            else if(index == size()) {
+            else if(index == size) {
                 insertAtEnd(val);
                 return;
             }
-            else if(index < 0 || index > size()){
+            else if(index < 0 || index > size){
                 System.out.println("Wrong Input");
                 return;
             }
@@ -33,6 +34,7 @@ public class Implementation {
             }
             temp.next = ptr.next;
             ptr.next = temp;
+            size++;
         }
         void insertAtHead(int val){ // Insert value at head
             Node temp = new Node(val);
@@ -44,6 +46,7 @@ public class Implementation {
                 temp.next = head;
                 head = temp;
             }
+            size++;
         }
         void insertAtEnd(int val){ // insert element at end
             Node temp = new Node(val);
@@ -54,6 +57,7 @@ public class Implementation {
                 tail.next = temp;
             }
             tail = temp;
+            size++;
         }
         void display(){ //it will print the linked list
             Node temp = head;
@@ -63,17 +67,20 @@ public class Implementation {
             }
             System.out.println();
         }
-        int size(){ // it will count the size of the linked list and return
-            int count = 0;
-            Node temp = head;
-            while(temp != null){
-                count++;
-                temp = temp.next;
-            }
-            return count;
-        }
+
+        //size function is not needed as it is taking O(n) time
+        //so we have created size variable that will take O(1) time
+//        int size(){ // it will count the size of the linked list and return
+//            int count = 0;
+//            Node temp = head;
+//            while(temp != null){
+//                count++;
+//                temp = temp.next;
+//            }
+//            return count;
+//        }
         int getElement(int index){
-            if(index < 0 || index > size()){
+            if(index < 0 || index > size){
                 System.out.println("wrong input");
                 return -1;
             }
@@ -85,29 +92,58 @@ public class Implementation {
             }
             return temp.data;
         }
+        void deleteAtIndex(int index){
+
+            Node temp = head;
+            if(index < 0 || index > size){
+                System.out.println("Wrong input");
+                return;
+            }
+            else if(index == 0){
+                head = head.next;
+                size--;
+                return;
+            }
+            int i = 0;
+            while(i<index-1){
+                temp = temp.next;
+                i++;
+            }
+            temp.next = temp.next.next;
+            tail = temp;
+            size--;
+        }
     }
     public static void main(String[] args) {
         linkedList ll = new linkedList();
         ll.insertAtEnd(7); // 7
         ll.insertAtEnd(4); // 7 -> 4
         ll.display();
-        System.out.println(ll.size()); // it will print the size od the linked list
+        System.out.println(ll.size); // it will print the size od the linked list
         ll.insertAtEnd(22); // 7 -> 4 -> 22
         ll.display();
         ll.insertAtHead(3); // 3 -> 7 -> 4 -> 22
         ll.display();
-        System.out.println(ll.size());
+        System.out.println(ll.size);
         ll.insert(45,2); // 3 -> 7 -> 45 -> 4 -> 22
         ll.display();
-        System.out.println(ll.size());
+        System.out.println(ll.size);
         ll.insert(10,5); // 3 -> 7 -> 45 -> 4 -> 22 -> 10
         ll.display();
         System.out.println(ll.tail.data);
         ll.insert(0,0); // 0 -> 3 -> 7 -> 45 -> 4 -> 22 -> 10
         ll.display();
-        System.out.println(ll.size());
+        System.out.println(ll.size);
         ll.insert(45,54); // invalid input
         System.out.println(ll.getElement(3)); // 45
         System.out.println(ll.getElement(0)); // 0
+        ll.deleteAtIndex(1); // 0 -> 7 -> 45 -> 4 -> 22 -> 10
+        ll.display();
+        ll.deleteAtIndex(43); // wrong input
+        ll.deleteAtIndex(0); // 7 -> 45 -> 4 -> 22 -> 10
+        ll.display();
+        ll.deleteAtIndex(4); // 7 -> 45 -> 4 -> 22
+        ll.display();
+        System.out.println(ll.tail.data);
     }
 }
