@@ -17,7 +17,7 @@ public class middleOfTheLLOptimized {
             }
             System.out.println();
         }
-        public static Node middle(Node head){
+        public static Node rightmiddle(Node head){
             Node slow = head;
             Node fast = head;
             while(fast != null){
@@ -29,6 +29,15 @@ public class middleOfTheLLOptimized {
                     fast = fast.next;
                     slow = slow.next;
                 }
+            }
+            return slow;
+        }
+        public static Node leftMiddle(Node head){
+            Node fast = head;
+            Node slow = head;
+            while(fast.next != null && fast.next.next != null){
+                fast = fast.next.next;
+                slow = slow.next;
             }
             return slow;
         }
@@ -46,8 +55,10 @@ public class middleOfTheLLOptimized {
             d.next = e; // 1 -> 2 -> 3 -> 4 -> 5
             e.next = f; // 1 -> 2 -> 3 -> 4 -> 5 -> 6
             display(a);
-            Node middle = middle(a);
-            display(middle);
+            Node rightMiddle = rightmiddle(a);
+            display(rightMiddle);
+            Node leftMiddle = leftMiddle(a);
+            display(leftMiddle);
         }
     }
 }
