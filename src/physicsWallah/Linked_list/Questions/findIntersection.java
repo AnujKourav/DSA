@@ -36,8 +36,8 @@ public class findIntersection {
     public static class Node{
         int data;
         Node next;
-        Node(int data){
-            this.data = data;
+        Node(int x){
+            this.data = x;
         }
     }
     public static void main(String[] args) {
