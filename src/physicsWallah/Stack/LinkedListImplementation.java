@@ -1,8 +1,8 @@
 package physicsWallah.Stack;
 
 public class LinkedListImplementation {
-    static class Stack{
-        class Node{
+    static class Stack{ // user defined data structure
+        class Node{ // user defined data types
             int data;
             Node next;
             Node(int data){
@@ -47,7 +47,16 @@ public class LinkedListImplementation {
             if(top == null)return true;
             else return false;
         }
+        void displayRec(Node head){
+            if(head == null)return;
+            displayRec(head.next);
+            System.out.print(head.data + " ");
+        }
         void display(){
+            displayRec(top);
+            System.out.println();
+        }
+        void displayRev(){
             Node temp = top;
             while (temp != null) {
                 System.out.print(temp.data + " ");
@@ -63,16 +72,16 @@ public class LinkedListImplementation {
         s.display(); // 1
         System.out.println(s.isEmpty()); // false
         s.push(2);
-        s.display(); // 2 1
+        s.display(); // 1 2
         s.push(3);
-        s.display(); // 3 2 1
+        s.display(); // 1 2 3
         s.push(4);
-        s.display(); // 4 3 2 1
+        s.display(); // 1 2 3 4
         System.out.println(s.size()); // 4
         System.out.println(s.pop()); // 4
-        s.display(); // 3 2 1
+        s.display(); // 1 2 3
         System.out.println(s.peek()); // 3
-        s.display(); // 3 2 1
+        s.display(); // 1 2 3
         System.out.println(s.size()); // 3
     }
 }
