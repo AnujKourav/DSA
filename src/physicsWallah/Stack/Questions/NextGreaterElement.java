@@ -21,12 +21,10 @@ public class NextGreaterElement {
         st.push(arr[arr.length-1]);
         arr[arr.length-1] = -1;
         for(int i=arr.length-2;i>=0;i--){
-            if(arr[i] > st.peek()){
-                while(st.isEmpty() && arr[i] > st.peek()){
-                    st.pop();
-                }
+            while(st.isEmpty() && arr[i] > st.peek()){
+                st.pop();
             }
-            else if(arr[i] < st.peek()){
+            if(arr[i] < st.peek()){
                 arr[i] = st.peek();
                 st.push(arr[i]);
             }
